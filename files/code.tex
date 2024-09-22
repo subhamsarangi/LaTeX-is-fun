@@ -1,0 +1,41 @@
+\documentclass{article}
+\begin{document}
+
+\section*{Converting TeX and LaTeX to PDF}
+
+\subsection*{CLI Tools}
+\begin{itemize}
+    \item \textbf{For LaTeX:}
+    \begin{itemize}
+        \item \texttt{pdflatex}
+        \end{itemize}
+        \texttt{pdflatex filename.tex}
+    \item \textbf{For TeX:}
+    \begin{itemize}
+        \item \texttt{tex}
+        \end{itemize}
+        \texttt{tex filename.tex}
+        \texttt{dvipdf filename.dvi}
+\end{itemize}
+
+\subsection*{Python Methods}
+\begin{itemize}
+    \item \textbf{Using \texttt{subprocess}:}
+    \begin{verbatim}
+    import subprocess
+
+    def compile_tex(filename):
+        subprocess.run(['pdflatex', filename])
+    \end{verbatim}
+    \item \textbf{Using \texttt{pylatex}:}
+    \begin{verbatim}
+    from pylatex import Document, Section
+
+    doc = Document()
+    with doc.create(Section('International Young Mathematicians\' Convention')):
+        doc.append('Date: August 2023\n')
+    doc.generate_pdf('example', clean_tex=False)
+    \end{verbatim}
+\end{itemize}
+
+\end{document}
